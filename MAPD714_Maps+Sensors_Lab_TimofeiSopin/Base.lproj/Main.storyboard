@@ -91,6 +91,7 @@
                     </view>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="addButtonOutlet" destination="v0w-Cc-W3P" id="orS-N3-tR8"/>
                         <outlet property="blurView" destination="Efn-6w-IVk" id="Sxg-0d-o4G"/>
                         <outlet property="latTextfield" destination="KvU-hL-74e" id="Irg-RM-zP5"/>
                         <outlet property="longTextfield" destination="gk8-a3-xjA" id="VAj-fk-Ntw"/>

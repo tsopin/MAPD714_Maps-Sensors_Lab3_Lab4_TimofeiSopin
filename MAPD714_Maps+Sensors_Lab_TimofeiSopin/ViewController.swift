@@ -12,6 +12,7 @@ import MapKit
 class ViewController: UIViewController, CLLocationManagerDelegate {
   
   @IBOutlet weak var setBtn: UIButton!
+  @IBOutlet weak var addButtonOutlet: UIBarButtonItem!
   @IBOutlet weak var latTextfield: UITextField!
   
   @IBOutlet weak var longTextfield: UITextField!
@@ -92,7 +93,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     getLocatin(forLatitude: Double(lat)!, forLongitude: Double(long)!)
     
     }
-     animateOutBase()
+     dismissView()
   }
   func getLocatin(forLatitude: Double, forLongitude: Double) {
     let span = MKCoordinateSpanMake(0.1, 0.01)
@@ -111,11 +112,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
   }
   
   @IBAction func cancel(_ sender: Any) {
-    animateOutBase()
+    dismissView()
   }
   
   
-  func animateInBase()  {
+  func showView()  {
     self.view.addSubview(setView)
     
     setView.center = self.view.center
@@ -123,6 +124,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     setView.alpha = 0
     setView.layer.borderWidth = 1
     setView.layer.borderColor = UIColor.lightGray.cgColor
+    addButtonOutlet.isEnabled = false
     
     UIView.animate(withDuration: 0.2) {
       self.blurView.effect = self.blurEffect
@@ -135,12 +137,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
   }
   
-  func animateOutBase() {
+  func dismissView() {
     UIView.animate(withDuration: 0.2, animations: {
       self.setView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
       self.setView.alpha = 0
       self.blurView.effect = nil
       self.blurView.isHidden = true
+      self.addButtonOutlet.isEnabled = true
     }) { (success: Bool) in
       self.setView.removeFromSuperview()
       
@@ -163,7 +166,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
   
   
   @IBAction func enterLocation(_ sender: Any) {
-    animateInBase()
+    showView()
   }
   
 }
