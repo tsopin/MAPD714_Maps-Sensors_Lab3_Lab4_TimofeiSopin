@@ -154,8 +154,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
   func generateRandomOnShake() {
     //lat 90
     // long 180
-    let randomLatitude  = Double.random(min: 0.00, max: 90.00)
-    let randomLongitude  = Double.random(min: 0.00, max: 180.00)
+    let randomLatitude  = Double.random(min: -90.00, max: 90.00)
+    let randomLongitude  = Double.random(min: -180.00, max: 180.00)
     
     getLocatin(forLatitude: randomLatitude, forLongitude: randomLongitude)
     
